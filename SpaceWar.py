@@ -1,5 +1,6 @@
 import pygame
 import os
+import asyncio
 pygame.font.init()
 pygame.mixer.init()
 
@@ -106,7 +107,7 @@ def draw_winner(text):
     pygame.time.delay(3000)
 
 
-def main():
+async def main():
     blue = pygame.Rect(190, 450, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
     green = pygame.Rect(1200, 450, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
     blue_bullets = []
@@ -159,7 +160,8 @@ def main():
         draw_window(blue, green, blue_bullets, green_bullets, green_health, blue_health)
     pygame.quit()
     pygame.display.update()
+    await asyncio.sleep(0)
 
-
+asyncio.run(main())
 if __name__ == "__main__":
     main()
